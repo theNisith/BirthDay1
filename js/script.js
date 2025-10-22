@@ -511,8 +511,6 @@ function saveScore(time, moves) {
 
 // Send email notification when maze is completed
 function sendEmailNotification(time, moves, attemptNumber) {
-    const formData = new FormData();
-    
     const dateTime = new Date().toLocaleString('en-US', {
         weekday: 'long',
         year: 'numeric',
@@ -527,24 +525,35 @@ function sendEmailNotification(time, moves, attemptNumber) {
     const secs = time % 60;
     const timeFormatted = mins > 0 ? `${mins} minute(s) ${secs} second(s)` : `${secs} second(s)`;
     
-    formData.append('subject', `🎮 Maze Completed - Attempt #${attemptNumber}!`);
-    formData.append('message', `Great news! The maze was just completed!\n\n` +
-        `📅 Date & Time: ${dateTime}\n` +
-        `⏱️ Time Taken: ${timeFormatted}\n` +
-        `👣 Total Moves: ${moves}\n` +
-        `🎯 Attempt Number: ${attemptNumber}\n\n` +
-        `Performance: ${time < 60 && moves < 100 ? '🏆 Excellent!' : time < 120 && moves < 150 ? '⭐ Good!' : '👍 Keep going!'}\n\n` +
-        `Check the scoreboard for more details!`
-    );
+    const performance = time < 60 && moves < 100 ? '🏆 Excellent!' : 
+                       time < 120 && moves < 150 ? '⭐ Good!' : '👍 Keep going!';
     
-    // Send to FormSubmit (free email service)
-    fetch('https://formsubmit.co/nizipersonal@gmail.com', {
+    // Using FormSubmit AJAX endpoint
+    const data = {
+        _subject: `🎮 Maze Completed - Attempt #${attemptNumber}!`,
+        _template: 'table',
+        Date: dateTime,
+        'Time Taken': timeFormatted,
+        'Total Moves': moves,
+        'Attempt Number': attemptNumber,
+        Performance: performance
+    };
+    
+    // Send to FormSubmit with proper headers
+    fetch('https://formsubmit.co/ajax/nizipersonal@gmail.com', {
         method: 'POST',
-        body: formData
-    }).then(response => {
-        console.log('Notification sent successfully');
-    }).catch(error => {
-        console.log('Could not send notification:', error);
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Email notification sent successfully:', data);
+    })
+    .catch(error => {
+        console.error('Failed to send email notification:', error);
     });
 }
 
