@@ -358,20 +358,36 @@ function drawMaze() {
         }
     }
     
-    // Draw goal (boy) 💙
-    ctx.font = `${cellSize * 0.8}px Arial`;
+    // Draw goal (boy) with background circle
+    const goalX = mazeGame.goalPos.x * cellSize + cellSize / 2;
+    const goalY = mazeGame.goalPos.y * cellSize + cellSize / 2;
+    
+    // Blue background circle for boy
+    ctx.fillStyle = '#4A90E2';
+    ctx.beginPath();
+    ctx.arc(goalX, goalY, cellSize * 0.4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Draw boy emoji
+    ctx.font = `${cellSize * 0.6}px Arial`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('💙', 
-        mazeGame.goalPos.x * cellSize + cellSize / 2,
-        mazeGame.goalPos.y * cellSize + cellSize / 2
-    );
+    ctx.fillStyle = '#000';
+    ctx.fillText('👦', goalX, goalY);
     
-    // Draw player (girl) 💖
-    ctx.fillText('💖',
-        mazeGame.playerPos.x * cellSize + cellSize / 2,
-        mazeGame.playerPos.y * cellSize + cellSize / 2
-    );
+    // Draw player (girl) with background circle
+    const playerX = mazeGame.playerPos.x * cellSize + cellSize / 2;
+    const playerY = mazeGame.playerPos.y * cellSize + cellSize / 2;
+    
+    // Pink background circle for girl
+    ctx.fillStyle = '#FF69B4';
+    ctx.beginPath();
+    ctx.arc(playerX, playerY, cellSize * 0.4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Draw girl emoji
+    ctx.fillStyle = '#000';
+    ctx.fillText('👧', playerX, playerY);
 }
 
 // Handle keyboard controls
@@ -409,6 +425,14 @@ function handleMazeKeyPress(e) {
 // Move player
 function movePlayer(direction) {
     if (mazeGame.gameWon) return;
+    
+    // Auto-start music on first move
+    if (mazeGame.moves === 0 && !musicPlaying) {
+        bgMusic.play().catch(e => console.log('Music autoplay blocked'));
+        musicToggle.classList.add('playing');
+        musicToggle.textContent = '🔊';
+        musicPlaying = true;
+    }
     
     const {x, y} = mazeGame.playerPos;
     const cell = mazeGame.maze[y][x];
@@ -453,8 +477,26 @@ function winMazeGame() {
     message.textContent = `💕 Love Found! 💕 Time: ${time}s | Moves: ${mazeGame.moves}`;
     message.className = 'maze-message success';
     
+    // Save score to scoreboard
+    saveScore(time, mazeGame.moves);
+    
     // Celebration animation
     celebrateLoveFound();
+}
+
+// Save score to localStorage
+function saveScore(time, moves) {
+    const score = {
+        date: new Date().toISOString(),
+        time: time,
+        moves: moves,
+        timestamp: Date.now()
+    };
+    
+    let scores = JSON.parse(localStorage.getItem('mazeScores') || '[]');
+    scores.push(score);
+    scores.sort((a, b) => a.time - b.time); // Sort by time (fastest first)
+    localStorage.setItem('mazeScores', JSON.stringify(scores));
 }
 
 function celebrateLoveFound() {

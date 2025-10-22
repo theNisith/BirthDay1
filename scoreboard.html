@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze Scoreboard 🏆</title>
+    <link rel="stylesheet" href="css/scoreboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <section class="header-section">
+            <h1 class="main-title">Maze Scoreboard 🏆</h1>
+            <p class="subtitle">Track all the attempts to find love! 👧💕👦</p>
+            <a href="index.html" class="back-button">← Back to Birthday Page</a>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🎮</div>
+                    <div class="stat-number" id="totalAttempts">0</div>
+                    <div class="stat-label">Total Attempts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-number" id="fastestTime">-</div>
+                    <div class="stat-label">Fastest Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👣</div>
+                    <div class="stat-number" id="fewestMoves">-</div>
+                    <div class="stat-label">Fewest Moves</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number" id="lastPlayed">-</div>
+                    <div class="stat-label">Last Played</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scoreboard Table -->
+        <section class="scoreboard-section">
+            <div class="scoreboard-card">
+                <h2>All Attempts 📊</h2>
+                <div class="filters">
+                    <button class="filter-btn active" onclick="sortScores('time')">Sort by Time</button>
+                    <button class="filter-btn" onclick="sortScores('moves')">Sort by Moves</button>
+                    <button class="filter-btn" onclick="sortScores('date')">Sort by Date</button>
+                    <button class="clear-btn" onclick="clearScores()">Clear All Scores</button>
+                </div>
+                <div class="table-container">
+                    <table class="scoreboard-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date & Time</th>
+                                <th>Time Taken</th>
+                                <th>Moves</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoresTableBody">
+                            <tr class="no-scores">
+                                <td colspan="5">No attempts yet! Play the maze to see scores here. 🎮</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievement Section -->
+        <section class="achievements-section">
+            <div class="achievements-card">
+                <h2>Achievements 🌟</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <div class="achievement locked" id="achievement-first">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-title">First Try</div>
+                        <div class="achievement-desc">Complete the maze once</div>
+                    </div>
+                    <div class="achievement locked" id="achievement-speedster">
+                        <div class="achievement-icon">⚡</div>
+                        <div class="achievement-title">Speedster</div>
+                        <div class="achievement-desc">Complete in under 60 seconds</div>
+                    </div>
+                    <div class="achievement locked" id="achievement-efficient">
+                        <div class="achievement-icon">👣</div>
+                        <div class="achievement-title">Efficient</div>
+                        <div class="achievement-desc">Complete in under 100 moves</div>
+                    </div>
+                    <div class="achievement locked" id="achievement-persistent">
+                        <div class="achievement-icon">💪</div>
+                        <div class="achievement-title">Persistent</div>
+                        <div class="achievement-desc">Complete 5 times</div>
+                    </div>
+                    <div class="achievement locked" id="achievement-dedicated">
+                        <div class="achievement-icon">💖</div>
+                        <div class="achievement-title">Dedicated</div>
+                        <div class="achievement-desc">Complete 10 times</div>
+                    </div>
+                    <div class="achievement locked" id="achievement-master">
+                        <div class="achievement-icon">👑</div>
+                        <div class="achievement-title">Maze Master</div>
+                        <div class="achievement-desc">Complete 20 times</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Section -->
+        <section class="message-section">
+            <div class="message-card">
+                <h3>Keep Playing! 💕</h3>
+                <p>Every attempt brings you closer to mastering the maze of love!</p>
+                <div class="heart-container">
+                    <span class="big-heart">👧💕👦</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/scoreboard.js"></script>
+</body>
+</html>
