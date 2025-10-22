@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎉</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="sparkle sparkle-1">✨</div>
+            <div class="sparkle sparkle-2">💖</div>
+            <div class="sparkle sparkle-3">🌟</div>
+            <div class="sparkle sparkle-4">💕</div>
+            <div class="sparkle sparkle-5">⭐</div>
+            
+            <h1 class="main-title animate-title">
+                <span class="letter">H</span>
+                <span class="letter">a</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">y</span>
+                <span class="letter space"> </span>
+                <span class="letter">B</span>
+                <span class="letter">i</span>
+                <span class="letter">r</span>
+                <span class="letter">t</span>
+                <span class="letter">h</span>
+                <span class="letter">d</span>
+                <span class="letter">a</span>
+                <span class="letter">y</span>
+                <span class="letter">!</span>
+            </h1>
+            
+            <div class="gif-container bounce-in">
+                <img src="https://media.tenor.com/zjBDhwhblFMAAAAm/pinching-cheeks-bubu-angry.webp" alt="Cute Animation" class="cute-gif">
+            </div>
+            
+            <p class="subtitle fade-in">To the most amazing person! 🎂</p>
+            
+            <button class="cta-button pulse" onclick="scrollToWishes()">
+                See Your Special Message 💌
+            </button>
+        </section>
+
+        <!-- Birthday Message Section -->
+        <section class="message-section" id="wishes">
+            <div class="card slide-up">
+                <div class="card-header">
+                    <h2>A Special Day for a Special Person! 🎈</h2>
+                </div>
+                <div class="card-body">
+                    <p class="message-text">
+                        Today is all about celebrating YOU! 🎉
+                        <br><br>
+                        Your smile lights up every room, your laughter is contagious, 
+                        and your kindness touches everyone around you. 
+                        <br><br>
+                        On this special day, I hope all your dreams come true and 
+                        that this year brings you endless joy, love, and amazing adventures! ✨
+                    </p>
+                    
+                    <div class="gif-row">
+                        <img src="https://media1.tenor.com/m/pDoKTLr2QXQAAAAd/dudu-give-flowers-bubu.gif" alt="Giving Flowers" class="message-gif">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <div class="card slide-up">
+                <h2>Time Celebrated Together 🎊</h2>
+                <div class="countdown-grid">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">0</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">0</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">0</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">0</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishes Gallery Section -->
+        <section class="wishes-gallery">
+            <h2 class="section-title">Birthday Wishes 💝</h2>
+            <div class="wishes-grid">
+                <div class="wish-card">
+                    <div class="wish-icon">🌟</div>
+                    <h3>May Your Day Shine</h3>
+                    <p>Like the brightest star in the sky, may your birthday sparkle with joy and happiness!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">💖</div>
+                    <h3>Filled with Love</h3>
+                    <p>May your heart be filled with all the love and warmth you bring to others every day!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🎁</div>
+                    <h3>Dreams Come True</h3>
+                    <p>Here's to a year where all your wishes and dreams become beautiful reality!</p>
+                </div>
+                <div class="wish-card">
+                    <div class="wish-icon">🌈</div>
+                    <h3>Colorful Adventures</h3>
+                    <p>May your journey ahead be filled with vibrant moments and wonderful surprises!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cute Animation Section -->
+        <section class="animation-section">
+            <div class="card slide-up">
+                <h2>You Deserve All The Happiness! 🥰</h2>
+                <div class="gif-container-large">
+                    <img src="https://media1.tenor.com/m/PkjG37kkN24AAAAd/tkthao219-bubududu.gif" alt="Cute Celebration" class="celebration-gif">
+                </div>
+                <p class="celebration-text">
+                    Keep shining, keep smiling, and keep being the wonderful person you are! 
+                    The world is a better place with you in it! 🌟💕
+                </p>
+            </div>
+        </section>
+
+        <!-- Maze Game Section -->
+        <section class="maze-game-section">
+            <div class="card">
+                <h2>Find Your Love! 💕</h2>
+                <p class="game-instructions">Help the girl find her love! Use arrow keys or swipe to move through the maze 🎮</p>
+                <div class="maze-stats">
+                    <span class="stat-item">Moves: <span id="moveCount">0</span></span>
+                    <span class="stat-item">Time: <span id="gameTime">0</span>s</span>
+                </div>
+                <div class="maze-container" id="mazeContainer">
+                    <canvas id="mazeCanvas"></canvas>
+                </div>
+                <div class="maze-controls">
+                    <button class="control-btn" onclick="startNewMaze()">New Maze</button>
+                    <button class="control-btn" onclick="showMazeSolution()">Show Path</button>
+                </div>
+                <div class="maze-message" id="mazeMessage"></div>
+            </div>
+        </section>
+
+        <!-- Balloon Pop Game Section -->
+        <section class="game-section">
+            <div class="card">
+                <h2>Pop the Balloons! 🎈</h2>
+                <p class="game-instructions">Click the balloons to pop them and reveal surprises!</p>
+                <div class="score-board">
+                    <span>Popped: <span id="score">0</span></span>
+                </div>
+                <div class="balloons-container" id="balloonsContainer"></div>
+                <button class="reset-button" onclick="resetGame()">Reset Game</button>
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <section class="final-section">
+            <div class="final-message">
+                <h2 class="final-title">Have the Most Amazing Birthday! 🎂✨</h2>
+                <p class="final-text">
+                    May this special day be just the beginning of a year filled with 
+                    happy memories, wonderful moments, and beautiful dreams come true!
+                </p>
+                <div class="heart-container">
+                    <span class="big-heart">💖</span>
+                </div>
+                <p class="signature">With lots of love and best wishes! 🌟</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+        🎵
+    </button>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/birthday-music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
