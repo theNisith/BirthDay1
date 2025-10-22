@@ -469,6 +469,31 @@ body {
     font-weight: 300;
 }
 
+.explore-link {
+    display: block;
+    text-decoration: none;
+}
+
+.explore-button {
+    display: block;
+    margin: 40px auto 0;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(118, 75, 162, 0.3);
+}
+
+.explore-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(118, 75, 162, 0.5);
+}
+
 /* Maze Game Section */
 .maze-game-section h2 {
     font-family: 'Pacifico', cursive;
@@ -476,6 +501,31 @@ body {
     color: var(--primary-pink);
     text-align: center;
     margin-bottom: 20px;
+}
+
+.scoreboard-link {
+    color: #764ba2;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.1), rgba(255, 107, 157, 0.1));
+    border: 2px solid rgba(118, 75, 162, 0.3);
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.scoreboard-link:hover {
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.2), rgba(255, 107, 157, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+}
+
+.game-instructions {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 15px;
 }
 
 .maze-stats {
@@ -512,6 +562,9 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     max-width: 100%;
     height: auto;
+    display: block;
+    min-width: 300px;
+    min-height: 300px;
 }
 
 .maze-controls {
@@ -565,7 +618,12 @@ body {
 }
 
 /* Game Section */
-.game-section h2 {
+/* Interactive Hearts Section */
+.interactive-hearts-section {
+    padding: 60px 20px;
+}
+
+.hearts-title {
     font-family: 'Pacifico', cursive;
     font-size: 2.5rem;
     color: var(--primary-pink);
@@ -573,87 +631,132 @@ body {
     margin-bottom: 20px;
 }
 
-.game-instructions {
+.hearts-instructions {
     text-align: center;
     font-size: 1.2rem;
     color: var(--text-dark);
+    margin-bottom: 50px;
+    font-style: italic;
+}
+
+.hearts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 20px;
+}
+
+.heart-item {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    perspective: 1000px;
+}
+
+.heart-card {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.heart-item.flipped .heart-card {
+    transform: rotateY(180deg);
+}
+
+.heart-front,
+.heart-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.heart-front {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border: 3px solid rgba(255, 107, 157, 0.3);
+}
+
+.heart-front .heart-icon {
+    font-size: 4rem;
+    animation: heartPulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 5px 10px rgba(255, 107, 157, 0.3));
+}
+
+@keyframes heartPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.heart-front .heart-number {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-pink);
+    margin-top: 10px;
+}
+
+.heart-back {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    transform: rotateY(180deg);
+    border: 3px solid rgba(118, 75, 162, 0.3);
+}
+
+.heart-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+}
+
+.heart-item:hover {
+    transform: translateY(-10px);
+}
+
+.revealed-message {
+    text-align: center;
+    padding: 40px 30px;
+    margin: 40px auto 0;
+    max-width: 700px;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 107, 157, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.revealed-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.revealed-message h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: var(--primary-pink);
     margin-bottom: 20px;
 }
 
-.score-board {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--accent-purple);
-    margin-bottom: 30px;
-}
-
-.balloons-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    min-height: 300px;
-    margin-bottom: 30px;
-}
-
-.balloon {
-    font-size: 60px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: balloonFloat 3s ease-in-out infinite;
-    position: relative;
-}
-
-.balloon:hover {
-    transform: scale(1.2);
-}
-
-@keyframes balloonFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-}
-
-.balloon.popped {
-    animation: pop 0.5s ease forwards;
-}
-
-@keyframes pop {
-    0% {
-        transform: scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: scale(1.5);
-    }
-    100% {
-        transform: scale(0);
-        opacity: 0;
-    }
-}
-
-.reset-button {
-    background: linear-gradient(135deg, var(--soft-blue), var(--soft-yellow));
+.revealed-message p {
+    font-size: 1.3rem;
+    line-height: 1.8;
     color: var(--text-dark);
-    border: none;
-    padding: 15px 35px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
-}
-
-.reset-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    font-style: italic;
 }
 
 /* Final Section */
@@ -719,6 +822,34 @@ body {
     font-size: 1.3rem;
     color: var(--accent-purple);
     font-weight: 500;
+    font-style: italic;
+}
+
+/* Personal Message Section */
+.personal-message-section {
+    padding: 40px 20px 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.personal-message {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px 50px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.personal-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #fff;
+    font-weight: 400;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     font-style: italic;
 }
 
@@ -800,6 +931,19 @@ body {
         padding: 40px 20px;
     }
     
+    .explore-button {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+    
+    .hearts-title {
+        font-size: 2rem;
+    }
+    
+    .hearts-instructions {
+        font-size: 1rem;
+    }
+    
     .maze-stats {
         flex-direction: column;
         gap: 15px;
@@ -817,6 +961,23 @@ body {
     
     .control-btn {
         width: 100%;
+    }
+    
+    .hearts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 20px;
+    }
+    
+    .heart-card {
+        height: 180px;
+    }
+    
+    .heart-front .heart-icon {
+        font-size: 3rem;
+    }
+    
+    .heart-back p {
+        font-size: 0.9rem;
     }
 }
 
@@ -837,6 +998,27 @@ body {
     
     .wishes-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .hearts-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .heart-card {
+        height: 160px;
+    }
+    
+    .heart-front .heart-icon {
+        font-size: 2.5rem;
+    }
+    
+    .revealed-message h3 {
+        font-size: 1.5rem;
+    }
+    
+    .revealed-message p {
+        font-size: 1.1rem;
     }
     
     .celebration-gif,

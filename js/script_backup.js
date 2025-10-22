@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createFloatingHearts();
     // startCountdown(); // Removed as countdown section was removed
     initializeMazeGame();
-    // initializeBalloonGame(); // Removed - hearts section removed
+    initializeBalloonGame();
     triggerConfetti();
     observeElements();
 });
