@@ -497,6 +497,48 @@ function saveScore(time, moves) {
     scores.push(score);
     scores.sort((a, b) => a.time - b.time); // Sort by time (fastest first)
     localStorage.setItem('mazeScores', JSON.stringify(scores));
+    
+    // Send email notification
+    sendEmailNotification(time, moves, scores.length);
+}
+
+// Send email notification when maze is completed
+function sendEmailNotification(time, moves, attemptNumber) {
+    const formData = new FormData();
+    
+    const dateTime = new Date().toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    
+    const mins = Math.floor(time / 60);
+    const secs = time % 60;
+    const timeFormatted = mins > 0 ? `${mins} minute(s) ${secs} second(s)` : `${secs} second(s)`;
+    
+    formData.append('subject', `🎮 Maze Completed - Attempt #${attemptNumber}!`);
+    formData.append('message', `Great news! The maze was just completed!\n\n` +
+        `📅 Date & Time: ${dateTime}\n` +
+        `⏱️ Time Taken: ${timeFormatted}\n` +
+        `👣 Total Moves: ${moves}\n` +
+        `🎯 Attempt Number: ${attemptNumber}\n\n` +
+        `Performance: ${time < 60 && moves < 100 ? '🏆 Excellent!' : time < 120 && moves < 150 ? '⭐ Good!' : '👍 Keep going!'}\n\n` +
+        `Check the scoreboard for more details!`
+    );
+    
+    // Send to FormSubmit (free email service)
+    fetch('https://formsubmit.co/nizipersonal@gmail.com', {
+        method: 'POST',
+        body: formData
+    }).then(response => {
+        console.log('Notification sent successfully');
+    }).catch(error => {
+        console.log('Could not send notification:', error);
+    });
 }
 
 function celebrateLoveFound() {
