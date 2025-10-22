@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories 💕</title>
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="hearts-container" id="heartsContainer"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header Section -->
+        <section class="header-section">
+            <h1 class="main-title">Beautiful Memories 📸💕</h1>
+            <p class="subtitle">Every photo tells a story of your beautiful smile</p>
+            <a href="index.html" class="back-button">← Back to Birthday Page</a>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="gallery-section">
+            <div class="photo-grid">
+                <!-- Photo 1 -->
+                <div class="photo-card fade-in">
+                    <div class="photo-frame">
+                        <img src="assets/1.jpg" alt="Beautiful Memory 1" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <p class="photo-caption">You look Cute Princess 🌿✨</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo 2 -->
+                <div class="photo-card fade-in delay-1">
+                    <div class="photo-frame">
+                        <img src="assets/2.jpg" alt="Beautiful Memory 2" class="gallery-photo">
+                        <div class="photo-overlay">
+                            <p class="photo-caption">That beautiful smile 😊💖</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Photo Section -->
+        <section class="special-section">
+            <div class="special-card">
+                <div class="special-header">
+                    <h2>A Moment Close to My Heart 💝</h2>
+                    <p class="special-subtitle">This one is really special to me...</p>
+                </div>
+                <div class="special-photo-container">
+                    <div class="special-frame">
+                        <img src="assets/3.jpg" alt="Special Memory" class="special-photo">
+                        <div class="heart-decorations">
+                            <span class="deco-heart heart-1">💕</span>
+                            <span class="deco-heart heart-2">💖</span>
+                            <span class="deco-heart heart-3">💗</span>
+                            <span class="deco-heart heart-4">💝</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="special-message">
+                    <p class="message-text">
+                        Because you have sent me this photo yourself 🌟
+                        <br><br>
+                        Your smile, and everything about that moment 
+                        is captured perfectly. This will always be one of my favorite photos of yours.
+                        <br><br>
+                         💕✨
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="quote-card">
+                <p class="quote-text">
+                    "The best thing about a picture is that it never changes, 
+                    even when the people in it do."
+                </p>
+                <p class="quote-author">- Andy Warhol</p>
+            </div>
+        </section>
+
+        <!-- Final Message -->
+        <section class="final-message-section">
+            <div class="final-card">
+                <h3>Keep Shining! ✨</h3>
+                <p>These memories are just the beginning of many more beautiful moments to come!</p>
+                <div class="heart-container">
+                    <span class="big-heart">💖</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Music Toggle Button -->
+    <button class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+        🎵
+    </button>
+
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="assets/Richard Marx - Right Here Waiting (Official Music Video).mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/gallery.js"></script>
+</body>
+</html>
